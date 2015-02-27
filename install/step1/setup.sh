@@ -3,6 +3,23 @@
 echo "Step 1 - Core install"
 echo "======================"
 
+echo "Please set your fave editor:"
+echo "1. Vi"
+echo "2. Vim"
+echo "3. Nano"
+read -p " Editor(1-3) [1] > " _answer
+if [[ $_answer = "1" ]]; then
+	EDITOR='vi'
+fi
+if [[ $_answer = "2" ]]; then
+	EDITOR='vim'
+fi
+if [[ $_answer = "3" ]]; then
+	EDITOR='nano'
+fi
+export EDITOR
+
+
 echo " >> install sudo"
 pacman --noconfirm -S sudo
 echo "------------------------------------";
