@@ -29,7 +29,7 @@ fi
 
 # Copy all infinity installer files to /opt/infinity-install
 mkdir -p /opt/infinity-install
-cp -R install /opt/infinity-install
+cp -R install/* /opt/infinity-install
 
 # invoke the first install step
 /opt/infinity-install/step1/setup.sh
