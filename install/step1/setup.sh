@@ -28,7 +28,7 @@ read -p " ANY KEY to continue > " _answer
 pacman --noconfirm -S xorg-server xorg-xinit xorg-utils xorg-server-utils
 
 echo "----------------------------------";
-read -P " are we on VirtualBox? (y/N) > " _answer
+read -p " are we on VirtualBox? (y/N) > " _answer
 if [[ $_answer = "y" ]]; then
 	pacman --noconfirm -S virtualbox-guest-utils
 fi
