@@ -44,3 +44,6 @@ pacman --noconfirm -S obconf obmenu
 
 echo " >> install panel"
 pacman --noconfirm -S tint2
+
+## install the main apps
+/opt/infinity-install/step1/apps.sh

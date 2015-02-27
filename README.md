@@ -14,7 +14,9 @@ After the end of #!, I decided to rewrite my infinityOS extensions for nw and bu
 ### installation
 download this package with git.
 > git clone https://github.com/dari-ta/infinityOS
+
 go into the directory
 > cd infinityOS
+
 run the installer
 > ./setup.sh --install
