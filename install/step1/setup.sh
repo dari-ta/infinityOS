@@ -69,3 +69,10 @@ pacman --noconfirm -q -S tint2
 /opt/infinity-install/step1/apps.sh
 ## install packages from AUR
 /opt/infinity-install/step1/aur.sh
+
+
+## config the root user
+/opt/infinity-install/step1/config_user.sh /root/
+
+## config the skel user
+/opt/infinity-install/step1/config_user.sh /etc/skel/
