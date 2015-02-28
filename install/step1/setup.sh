@@ -21,7 +21,7 @@ export EDITOR
 
 
 echo " >> install sudo"
-pacman --noconfirm -S sudo
+pacman --noconfirm -q -S sudo
 echo "------------------------------------";
 echo " we'll display you the sudoers file."
 echo " find the %wheel ALL=(ALL) ALL"
@@ -31,39 +31,39 @@ read -p " ANY KEY to continue > " _answer
 EDITOR=nano visudo
 
 echo " >> install main services"
-pacman --noconfirm -S acpid ntp dbus avahi cronie
+pacman --noconfirm -q -S acpid ntp dbus avahi cronie
 systemctl enable cronie
 systemctl enable acpid
 systemctl enable ntpd
 systemctl enable avahi-daemon
 
 echo " >> install core system apps"
-pacman --noconfirm -S wget yajl
+pacman --noconfirm -q -S wget yajl
 
 echo "---------------------------------";
 echo " >> install the X Window system"
 echo " you'll may be promted to choose your display driver"
 read -p " ANY KEY to continue > " _answer
 
-pacman --noconfirm -S xorg-server xorg-xinit xorg-utils xorg-server-utils
+pacman -S xorg-server xorg-xinit xorg-utils xorg-server-utils
 
 echo "----------------------------------";
 read -p " are we on VirtualBox? (y/N) > " _answer
 if [[ $_answer = "y" ]]; then
-	pacman --noconfirm -S virtualbox-guest-utils
+	pacman --noconfirm -q -S virtualbox-guest-utils
 fi
 
 echo " >> install window manager"
-pacman --noconfirm -S openbox
+pacman --noconfirm -q -S openbox
 mkdir -p ~/.config/openbox
 cp /etc/xdg/openbox/rc.xml ~/.config/openbox/
 cp /etc/xdg/openbox/menu.xml ~/.config/openbox/
 echo "exec openbox-session" >> ~/.xinitrc
 
-pacman --noconfirm -S obconf obmenu
+pacman --noconfirm -q -S obconf obmenu
 
 echo " >> install panel"
-pacman --noconfirm -S tint2
+pacman --noconfirm -q -S tint2
 
 ## install the main apps
 /opt/infinity-install/step1/apps.sh
