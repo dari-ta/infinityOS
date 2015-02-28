@@ -37,6 +37,9 @@ systemctl enable acpid
 systemctl enable ntpd
 systemctl enable avahi-daemon
 
+echo " >> install core system apps"
+pacman --noconfirm -S wget
+
 echo "---------------------------------";
 echo " >> install the X Window system"
 echo " you'll may be promted to choose your display driver"
@@ -64,3 +67,5 @@ pacman --noconfirm -S tint2
 
 ## install the main apps
 /opt/infinity-install/step1/apps.sh
+## install packages from AUR
+/opt/infinity-install/step1/aur.sh

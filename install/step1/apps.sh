@@ -17,6 +17,7 @@ echo " >> install desktop manager"
 echo "--------------------------"
 echo " change Type=Application"
 echo " to Type=XSession"
+read -p " ANY KEY to continue > " _answer
 $EDITOR /usr/share/xsessions/openbox.desktop
 
 pacman --noconfirm -S lightdm lightdm-gtk2-greeter
@@ -43,8 +44,8 @@ pacman --noconfirm -S xfce4-notifyd gnome-keyring seahorse nitrogen
 
 ## Sound
 echo " >> install sound system"
-pacman -S volwheel
-pacman -S pulseaudio paprefs pulseaudio-alsa alsa-utils gstreamer gstreamer0.10-base
+pacman --noconfirm -S volwheel
+pacman --noconfirm -S pulseaudio paprefs pulseaudio-alsa alsa-utils gstreamer gstreamer0.10-base
 
 ## System 
 echo " >> install system stuff"
