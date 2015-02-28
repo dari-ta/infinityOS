@@ -71,6 +71,9 @@ pacman --noconfirm -q -S tint2
 /opt/infinity-install/step1/aur.sh
 
 
+## config the system
+/opt/infinity-install/step1/config_global.sh
+
 ## config the root user
 /opt/infinity-install/step1/config_user.sh /root/
 

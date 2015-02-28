@@ -9,7 +9,15 @@ if [[ $1 = "" ]]; then
 fi
 
 HPATH=$1
-IPATH="/opt/infinity-install/"
+IPATH="/opt/infinity-install/configs/user/"
 
 echo " >> config tint2"
-cp $IPATH/configs/user/tint2rc $HPATH/.config/tint2/tint2rc
+mkdir -p $HPATH/.config/tint2
+cp $IPATH/tint2rc $HPATH/.config/tint2/tint2rc
+
+echo " >> config compton"
+cp $IPATH/compton.conf $HPATH/.config/compton.conf
+
+echo " >> config openbox"
+mkdir -p $HPATH/.config/openbox
+cp $IPATH/openbox/* $HPATH/.config/openbox/

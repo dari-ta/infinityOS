@@ -1,0 +1,66 @@
+# Just copied from #!
+#
+# There's no more CrunchBangin'...
+#
+## GNOME PolicyKit and Keyring
+eval $(gnome-keyring-daemon -s --components=pkcs11,secrets,ssh,gpg) &
+
+## Set root window color
+# hsetroot -solid "#2E3436" &
+
+## Group start
+## 1. nitrogen - restores wallpaper
+## 2. compositor - start
+## 3. sleep - giv compositor time to start
+## 4. tint2 panel
+(\
+nitrogen --restore && \
+cb-compositor --start && \
+sleep 2s && \
+tint2 \ 
+) &
+
+## Volume control for systray
+(sleep 2s && pnmixer) &
+
+## Volume keys daemon
+xfce4-volumed &
+
+## Enable power management
+xfce4-power-manager &
+
+## Enable Networking
+nm-applet &
+
+## Start Thunar daemon
+thunar --daemon &
+
+## Detect and configure touchpad. See 'man synclient' for more info.
+if egrep -iq 'touchpad' /proc/bus/input/devices; then
+   synclient VertEdgeScroll=1 &
+   synclient TapButton1=1 &
+fi
+
+## TODO: screensaver
+
+## Start clipboard manager
+(sleep 3s && clipit) &
+
+## keyboard settings
+xset r rate 250 25 &
+
+## System beep
+xset b off & 
+
+## Keyboard
+setxkbmap -option grp:switch,grp:shifts_toggle,grp_led:scroll us,de &
+(sleep 1s && fbxkb) &
+
+## Start the polkit agent
+/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
+
+## Start the update notifier
+kalu &
+
+## VirtualBox guest
+VBoxClient-all
