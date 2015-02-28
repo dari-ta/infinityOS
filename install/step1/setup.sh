@@ -79,3 +79,11 @@ pacman --noconfirm -q -S tint2
 
 ## config the skel user
 /opt/infinity-install/step1/config_user.sh /etc/skel/
+
+
+## autologon for first use
+echo " >> config autologin for first use"
+cp /opt/infinity-install/configs/global/lightdm.conf_autologon /etc/lightdm/lightdm.conf
+groupadd autologin
+gpasswd -a root autologin
+echo "/opt/infinity-install/step2/setup.sh &" >> /root/.config/openbox/autostart

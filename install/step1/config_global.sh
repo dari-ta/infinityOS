@@ -18,9 +18,3 @@ cp -R $IPATH/bin/* /usr/bin/
 echo " >> config lightdm"
 mkdir -p /etc/lightdm
 cp $IPATH/lightdm-gtk-greeter.conf /etc/lightdm/
-
-echo " >> config autologin for first use"
-cp $IPATH/lightdm.conf_autlologon /etc/lightdm/lightdm.conf
-groupadd autologin
-gpasswd -a root autologin
-echo "/opt/infinity-install/step2/setup.sh &" >> /root/.config/openbox/autostart

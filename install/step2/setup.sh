@@ -6,4 +6,9 @@ fi
 echo "Welcome to the second step"
 
 
+## Remove the autologin stuff
+cp /opt/infinity-install/configs/global/lightdm.conf /etc/lightdm/lightdm.conf
+gpasswd -d root autologin
+
+
 read -srn1
