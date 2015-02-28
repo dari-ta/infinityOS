@@ -4,7 +4,7 @@ echo " >> install yaourt"
 wget https://aur.archlinux.org/packages/ya/yaourt/yaourt.tar.gz
 tar -xzf yaourt.tar.gz
 cd yaourt
-makepkg
+makepkg --asroot
 ## we dont't know the package name yet
 echo " -------------------"
 echo " installing YAOURT"
