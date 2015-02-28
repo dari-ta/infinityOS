@@ -41,6 +41,18 @@ sudo pacman --noconfirm -U `ls *.tar.xz`
 cd ..
 
 echo " >> yaourt install fbxkb"
-yaourt --noconfirm fbxkb
+yaourt --noconfirm -S fbxkb
+
+echo " >> yaourt install kalu"
+yaourt --noconfirm -S kalu
+
+echo " >> yaourt install pnmixer"
+yaourt --noconfirm -S pnmixer
+
+echo " >> yaourt install xfce4-volumed"
+yaourt --noconfirm -S xfce4-volumed
+
+echo " >> yaourt install compton"
+yaourt --noconfirm -S compton
 
 exit
