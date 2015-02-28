@@ -31,7 +31,7 @@ fi
 mkdir -p /opt/infinity-install
 cp -R install/* /opt/infinity-install
 mkdir -p /opt/infinity-install/configs
-cp -R configs/* /opt/configs/infinity-install/configs
+cp -R configs/* /opt/infinity-install/configs
 
 # invoke the first install step
 /opt/infinity-install/step1/setup.sh
