@@ -19,7 +19,9 @@ echo " >> install desktop manager"
 #echo " to Type=XSession"
 # read -p " ANY KEY to continue > " _answer
 # $EDITOR /usr/share/xsessions/openbox.desktop
-sed -e"s/Type=Application/Type=XSession/g" < /usr/share/xsessions/openbox.desktop > /usr/share/xsessions/openbox.desktop
+sed -e"s/Type=Application/Type=XSession/g" < /usr/share/xsessions/openbox.desktop > /usr/share/xsessions/openbox.desktop2
+cp /usr/share/xsessions/openbox.desktop2 /usr/share/xsessions/openbox.desktop
+rm /usr/share/xsessions/openbox.desktop2
 
 pacman --noconfirm -q -S lightdm lightdm-gtk2-greeter
 systemctl enable lightdm.service
