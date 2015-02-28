@@ -38,7 +38,7 @@ systemctl enable ntpd
 systemctl enable avahi-daemon
 
 echo " >> install core system apps"
-pacman --noconfirm -S wget
+pacman --noconfirm -S wget yajl
 
 echo "---------------------------------";
 echo " >> install the X Window system"
