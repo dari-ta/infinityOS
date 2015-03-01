@@ -6,7 +6,7 @@
 ## * Viewnior
 
 echo " >> install main apps"
-pacman --noconfirm -q -S terminator xterm thunar thunar-archive-plugin file-roller thunar-volman raw-thumbnailer tumbler viewnior zenity >> /opt/infinity-install/install.log
+pacman --noconfirm -q -S terminator xterm thunar thunar-archive-plugin file-roller thunar-volman raw-thumbnailer tumbler viewnior zenity gsimplecal >> /opt/infinity-install/install.log
 
 ## Font
 echo " >> install fonts"

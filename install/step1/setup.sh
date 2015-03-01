@@ -87,7 +87,8 @@ echo " >> config autologin for first use"
 cp /opt/infinity-install/configs/global/lightdm.conf_autologon /etc/lightdm/lightdm.conf
 groupadd autologin >> /opt/infinity-install/install.log
 gpasswd -a root autologin >> /opt/infinity-install/install.log
-echo "/opt/infinity-install/step2/setup.sh &" >> /root/.config/openbox/autostart
+echo "#!/bin/bash" >> /root/.config/infinity/autostart/install_step2
+echo "/opt/infinity-install/step2/setup.sh &" >> /root/.config/infinity/autostart/install_step2
 
 
 echo "------------------------------------";

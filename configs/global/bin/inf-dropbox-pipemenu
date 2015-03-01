@@ -32,6 +32,7 @@ elif [[ $1 = '--install' ]]; then
         ans=$(zenity  --title='Dropbox Installation' --list --text  "$PROMPT_DELAY_TEXT" --radiolist  --column 'Pick' --column 'Seconds:' "${PROMPT_DELAY_VARIANTS[@]}")
         if [[ $? = 0 ]]; then
 			mkdir -p "$HOME/.config/infinity/autostart"
+			echo "#!/bin/bash" >> "$HOME/.config/infinity/autostart/dropbox"
             echo >> "$HOME/.config/infinity/autostart/dropbox"
             echo '# Autostart the Dropbox deamon' >> "$HOME/.config/infinity/autostart/dropbox"
             echo "(sleep ${ans}s && dropbox) &" >> "$HOME/.config/infinity/autostart/dropbox"

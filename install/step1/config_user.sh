@@ -31,3 +31,4 @@ mkdir -p $HPATH/Downloads
 mkdir -p $HPATH/Videos
 mkdir -p $HPATH/Templates
 mkdir -p $HPATH/Documents
+mkdir -p $HPATH/.config/infinity/autostart

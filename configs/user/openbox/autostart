@@ -62,5 +62,11 @@ setxkbmap -option grp:switch,grp:shifts_toggle,grp_led:scroll us,de &
 ## Start the update notifier
 kalu &
 
-## VirtualBox guest
-VBoxClient-all
+## Auto start registered autostart items
+for i in $HOME/.config/infinity/autostart/* 
+do
+    if test -f "$i" 
+    then
+       $i &
+    fi
+done
