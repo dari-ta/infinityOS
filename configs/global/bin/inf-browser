@@ -1,0 +1,22 @@
+#!/bin/bash
+
+if [[ -e "$HOME/.config/infinity/browser" ]];then
+	_BROWSER=`cat ~/.config/infinity/browser`
+else
+	if [[ -e "/usr/bin/opera" ]];then
+		_BROWSER='opera'
+	fi
+	if [[ -e "/usr/bin/firefox" ]];then
+		_BROWSER='firefox'
+	fi
+	if [[ -e "/usr/bin/chromium" ]];then
+		_BROWSER='chromium'
+	fi
+	if [[ -e "/usr/bin/google-chrome-stable" ]];then
+		_BROWSER='google-chrome-stable'
+	fi
+	
+	
+fi
+
+$_BROWSER $1

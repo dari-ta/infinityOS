@@ -1,0 +1,109 @@
+#!/bin/bash
+
+if [[ $1 = "" ]]; then
+	echo "Usage:"
+	echo "inf-browser-install BROWSERNAME"
+	echo "Valid Browser Names:"
+	echo " * Firefox, firefox"
+	echo " * Google Chrome, chrome"
+	echo " * Chromium, chromium"
+	echo " * Opera, opera"
+	exit 1
+fi
+
+setupFirefox(){
+	# zenity --question --title='Browser Selector' --text="Install Firefox?"
+	#if [[ $? = 1 ]];then
+	#	exit 1
+	#fi
+	
+	gksu "pacman --noconfirm -S firefox" | zenity --progress --pulsate --auto-close --title='Install' --text='installing Firefox'
+	
+	zenity --info --title="Browser Selector" --text="Firefox installed!"
+}
+
+setupChrome(){
+	echo "Chrome"
+	terminator --title='Google Chrome install' --command='inf-browser-install --chrome' 
+	
+	zenity --info --title="Browser Selector" --text="Google Chrome installed!"
+}
+
+setupChromium(){	
+	# zenity --question --title='Browser Selector' --text="Install Chromium?"
+	#if [[ $? = 1 ]];then
+	#	exit 1
+	#fi
+	
+	gksu "pacman --noconfirm -S chromium" | zenity --progress --pulsate --auto-close --title='Install' --text='installing Chromium'
+	
+	zenity --info --title="Browser Selector" --text="Chromium installed!"
+}
+
+setupOpera(){	
+	# zenity --question --title='Browser Selector' --text="Install Opera?"
+	#if [[ $? = 1 ]];then
+	#	exit 1
+	#fi
+	
+	gksu "pacman --noconfirm -S opera" | zenity --progress --pulsate --auto-close --title='Install' --text='installing Opera'
+	
+	zenity --info --title="Browser Selector" --text="Opera installed!"
+}
+
+
+if [[ $1 = '--default' ]];then
+	
+	zenity --info --title='Default Browser' --text="Default Browser is now $2"
+	echo "$2" > $HOME/.config/infinity/browser
+	
+	exit 0
+fi
+
+
+if [[ $1 = "firefox" ]];then
+	setupFirefox
+	exit 0
+fi
+if [[ $1 = "Firefox" ]];then
+	setupFirefox
+	exit 0
+fi
+if [[ $1 = "Google Chrome" ]];then
+	setupChrome
+	exit 0
+fi
+if [[ $1 = "chrome" ]]; then
+	setupChrome
+	exit 0
+fi
+if [[ $1 = "Chromium" ]];then
+	setupChromium
+	exit 0
+fi
+if [[ $1 = "chromium" ]];then
+	setupChromium
+	exit 0
+fi
+if [[ $1 = "Opera" ]];then
+	setupOpera
+	exit 0
+fi
+if [[ $1 = "opera" ]];then
+	setupOpera
+	exit 0
+fi
+if [[ $1 = "--chrome" ]];then
+	echo "installing Google Chrome"
+	echo "please wait..."
+	yaourt --noconfirm -S google-chrome
+	
+	echo "Install finished"
+	echo "Press any key"
+
+	read -srn1
+	exit 0
+fi
+
+zenity --error --title="Browser Selector" --text="This Browser can't be installed by this script"
+exit 1

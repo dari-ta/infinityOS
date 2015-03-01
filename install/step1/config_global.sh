@@ -14,6 +14,7 @@ cp -R $IPATH/gtk-2.0/* /usr/share/themes/infinity/gtk-2.0/
 
 echo " >> config binary files"
 cp -R $IPATH/bin/* /usr/bin/
+ln -s /usr/bin/inf-browser /usr/bin/x-www-browser
 
 echo " >> config lightdm"
 mkdir -p /etc/lightdm

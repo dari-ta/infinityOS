@@ -1,0 +1,68 @@
+#!/bin/bash
+# ---------------------------------------------------------------------
+# Original Written for CrunchBang Linux <http://crunchbang.org/>
+# by Philip Newborough (aka corenominal) <corenominal@corenominal.org>
+# adopted by dari-ta to infinityOS
+# ---------------------------------------------------------------------
+
+if ! . cb-include.cfg 2> /dev/null; then
+    echo 'Failed to locate cb-include.cfg in PATH' >&2
+    exit 1
+fi
+
+
+menuStart
+
+if [[ -e "/usr/bin/google-chrome-stable" ]];then
+	menuItem "Google Chrome" "google-chrome-stable"
+fi
+if [[ -e "/usr/bin/chromium" ]];then
+	menuItem "Chromium" "chromium"
+fi
+if [[ -e "/usr/bin/firefox" ]];then
+	menuItem "Firefox" "firefox"
+fi
+if [[ -e "/usr/bin/opera" ]];then
+	menuItem "Opera" "opera"
+fi
+
+menuSeparator "Install"
+
+if ! [[ -e "/usr/bin/google-chrome-stable" ]];then
+	menuItem "install Google Chrome" "inf-browser-install chrome"
+fi
+if ! [[ -e "/usr/bin/chromium" ]];then
+	menuItem "install Chromium" "inf-browser-install chromium"
+fi
+if ! [[ -e "/usr/bin/firefox" ]];then
+	menuItem "install Firefox" "inf-browser-install firefox"
+fi
+if ! [[ -e "/usr/bin/opera" ]];then
+	menuItem "install Opera" "inf-browser-install opera"
+fi
+
+menuSubmenu "inf-browser-default" "Default Browser"
+
+	if [[ -e "/usr/bin/google-chrome-stable" ]];then
+		menuItem "Google Chrome" "inf-browser-install --default google-chrome-stable"
+	fi
+	if [[ -e "/usr/bin/chromium" ]];then
+		menuItem "Chromium" "inf-browser-install --default chromium"
+	fi
+	if [[ -e "/usr/bin/firefox" ]];then
+		menuItem "Firefox" "inf-browser-install --default firefox"
+	fi
+	if [[ -e "/usr/bin/opera" ]];then
+		menuItem "Opera" "inf-browser-install --default opera"
+	fi
+menuSubmenuEnd
+
+menuEnd
+
+
+
+
+
+
+
+exit 0
