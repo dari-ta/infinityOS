@@ -24,10 +24,10 @@ cp $IPATH/openbox/* $HPATH/.config/openbox/
 
 
 # Make all essential directories
-mkdir -p $HAPTH/Documents
-mkdir -p $HAPTH/Pictures
-mkdir -p $HAPTH/Music
-mkdir -p $HAPTH/Downloads
-mkdir -p $HAPTH/Videos
-mkdir -p $HAPTH/Templates
-mkdir -p $HAPTH/Documents
+mkdir -p $HPATH/Documents
+mkdir -p $HPATH/Pictures
+mkdir -p $HPATH/Music
+mkdir -p $HPATH/Downloads
+mkdir -p $HPATH/Videos
+mkdir -p $HPATH/Templates
+mkdir -p $HPATH/Documents
