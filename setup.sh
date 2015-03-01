@@ -33,5 +33,9 @@ cp -R install/* /opt/infinity-install
 mkdir -p /opt/infinity-install/configs
 cp -R configs/* /opt/infinity-install/configs
 
+# Create the log files and make the available
+touch /opt/infinity-install/install.log
+chmod a+rw /opt/infinity-install/install.log
+
 # invoke the first install step
 /opt/infinity-install/step1/setup.sh
