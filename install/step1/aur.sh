@@ -21,10 +21,10 @@ echo " >> install package-query"
 wget https://aur.archlinux.org/packages/pa/package-query/package-query.tar.gz
 tar -xzf package-query.tar.gz
 cd package-query
-makepkg
+makepkg >> /opt/infinity-install/install.log
 echo " installing package-query"
 # read -p " ANY KEY to continue > " _answer
-sudo pacman --noconfirm -U `ls *.tar.xz`
+sudo pacman --noconfirm -U `ls *.tar.xz` >> /opt/infinity-install/install.log
 cd ..
 
 
@@ -32,27 +32,27 @@ echo " >> install yaourt"
 wget https://aur.archlinux.org/packages/ya/yaourt/yaourt.tar.gz
 tar -xzf yaourt.tar.gz
 cd yaourt
-makepkg
+makepkg >> /opt/infinity-install/install.log
 ## we dont't know the package name yet
 echo " -------------------"
 echo " installing YAOURT"
 #read -p " ANY KEY to continue > " _answer
-sudo pacman --noconfirm -U `ls *.tar.xz`
+sudo pacman --noconfirm -U `ls *.tar.xz` >> /opt/infinity-install/install.log
 cd ..
 
 echo " >> yaourt install fbxkb"
-yaourt --noconfirm -S fbxkb
+yaourt --noconfirm -S fbxkb >> /opt/infinity-install/install.log
 
 echo " >> yaourt install kalu"
-yaourt --noconfirm -S kalu
+yaourt --noconfirm -S kalu >> /opt/infinity-install/install.log
 
 echo " >> yaourt install pnmixer"
-yaourt --noconfirm -S pnmixer
+yaourt --noconfirm -S pnmixer >> /opt/infinity-install/install.log
 
 echo " >> yaourt install xfce4-volumed"
-yaourt --noconfirm -S xfce4-volumed
+yaourt --noconfirm -S xfce4-volumed >> /opt/infinity-install/install.log
 
 echo " >> yaourt install compton"
-yaourt --noconfirm -S compton
+yaourt --noconfirm -S compton >> /opt/infinity-install/install.log
 
 exit

@@ -21,7 +21,7 @@ export EDITOR
 
 
 echo " >> install sudo"
-pacman --noconfirm -q -S sudo
+pacman --noconfirm -q -S sudo >> /opt/infinity-install/install.log
 echo "------------------------------------";
 echo " we'll display you the sudoers file."
 echo " find the %wheel ALL=(ALL) ALL"
@@ -31,14 +31,14 @@ read -p " ANY KEY to continue > " _answer
 EDITOR=nano visudo
 
 echo " >> install main services"
-pacman --noconfirm -q -S acpid ntp dbus avahi cronie
+pacman --noconfirm -q -S acpid ntp dbus avahi cronie >> /opt/infinity-install/install.log
 systemctl enable cronie
 systemctl enable acpid
 systemctl enable ntpd
 systemctl enable avahi-daemon
 
 echo " >> install core system apps"
-pacman --noconfirm -q -S wget yajl
+pacman --noconfirm -q -S wget yajl >> /opt/infinity-install/install.log
 
 echo "---------------------------------";
 echo " >> install the X Window system"
@@ -50,20 +50,20 @@ pacman -S xorg-server xorg-xinit xorg-utils xorg-server-utils
 echo "----------------------------------";
 read -p " are we on VirtualBox? (y/N) > " _answer
 if [[ $_answer = "y" ]]; then
-	pacman --noconfirm -q -S virtualbox-guest-utils
+	pacman --noconfirm -q -S virtualbox-guest-utils >> /opt/infinity-install/install.log
 fi
 
 echo " >> install window manager"
-pacman --noconfirm -q -S openbox
+pacman --noconfirm -q -S openbox >> /opt/infinity-install/install.log
 mkdir -p ~/.config/openbox
 cp /etc/xdg/openbox/rc.xml ~/.config/openbox/
 cp /etc/xdg/openbox/menu.xml ~/.config/openbox/
 echo "exec openbox-session" >> ~/.xinitrc
 
-pacman --noconfirm -q -S obconf obmenu
+pacman --noconfirm -q -S obconf obmenu >> /opt/infinity-install/install.log
 
 echo " >> install panel"
-pacman --noconfirm -q -S tint2
+pacman --noconfirm -q -S tint2 >> /opt/infinity-install/install.log
 
 ## install the main apps
 /opt/infinity-install/step1/apps.sh
@@ -84,6 +84,6 @@ pacman --noconfirm -q -S tint2
 ## autologon for first use
 echo " >> config autologin for first use"
 cp /opt/infinity-install/configs/global/lightdm.conf_autologon /etc/lightdm/lightdm.conf
-groupadd autologin
-gpasswd -a root autologin
+groupadd autologin >> /opt/infinity-install/install.log
+gpasswd -a root autologin >> /opt/infinity-install/install.log
 echo "/opt/infinity-install/step2/setup.sh &" >> /root/.config/openbox/autostart
