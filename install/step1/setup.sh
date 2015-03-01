@@ -24,9 +24,10 @@ echo " >> install sudo"
 pacman --noconfirm -q -S sudo >> /opt/infinity-install/install.log
 echo "------------------------------------";
 echo " we'll display you the sudoers file."
-echo " find the %wheel ALL=(ALL) ALL"
+echo " find the %wheel ALL=(ALL) NOPASSWD:ALL"
 echo " and remove the # hashtag before"
 echo " exit with Ctrl+x or :wq"
+echo " !important: the wheel group must have access without! password"
 read -p " ANY KEY to continue > " _answer
 EDITOR=nano visudo
 
@@ -87,3 +88,18 @@ cp /opt/infinity-install/configs/global/lightdm.conf_autologon /etc/lightdm/ligh
 groupadd autologin >> /opt/infinity-install/install.log
 gpasswd -a root autologin >> /opt/infinity-install/install.log
 echo "/opt/infinity-install/step2/setup.sh &" >> /root/.config/openbox/autostart
+
+
+echo "------------------------------------";
+echo " we'll display you the sudoers file."
+echo " find the %wheel ALL=(ALL) ALL"
+echo " and remove the # hashtag before"
+echo " exit with Ctrl+x or :wq"
+echo " !important: the wheel group MUSTN'T have access without! password"
+read -p " ANY KEY to continue > " _answer
+EDITOR=nano visudo
+
+read -p " reboot now? (y/N) > " _answer
+if [[ $_answer = "y" ]]; then
+	reboot
+fi

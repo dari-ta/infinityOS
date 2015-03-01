@@ -21,7 +21,7 @@ echo " >> install package-query"
 wget https://aur.archlinux.org/packages/pa/package-query/package-query.tar.gz
 tar -xzf package-query.tar.gz
 cd package-query
-makepkg >> /opt/infinity-install/install.log
+makepkg
 echo " installing package-query"
 # read -p " ANY KEY to continue > " _answer
 sudo pacman --noconfirm -U `ls *.tar.xz` >> /opt/infinity-install/install.log
@@ -32,7 +32,7 @@ echo " >> install yaourt"
 wget https://aur.archlinux.org/packages/ya/yaourt/yaourt.tar.gz
 tar -xzf yaourt.tar.gz
 cd yaourt
-makepkg >> /opt/infinity-install/install.log
+makepkg
 ## we dont't know the package name yet
 echo " -------------------"
 echo " installing YAOURT"
