@@ -54,6 +54,7 @@ setupOpera(){
 
 if [[ $1 = '--default' ]];then
 	
+	mkdir -p $HOME/.config/infinity
 	zenity --info --title='Default Browser' --text="Default Browser is now $2"
 	echo "$2" > $HOME/.config/infinity/browser
 	
