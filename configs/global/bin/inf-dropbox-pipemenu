@@ -1,0 +1,73 @@
+#!/bin/bash
+
+
+PROMPT_DELAY_TEXT='It is a good idea to add a delay before autostarting Dropbox
+so that your system can establish a working network connection.
+
+Select the number of seconds to delay Dropbox autostarting.
+Click "Cancel" if you do not want to add a delay.'
+PROMPT_DELAY_VARIANTS=(FALSE 10 FALSE 20 FALSE 30 FALSE 40 FALSE 50 TRUE 60)
+
+
+if ! . cb-include.cfg 2> /dev/null; then
+    echo '  Failed to locate cb-include.cfg in PATH' >&2
+    exit 1
+fi
+
+
+
+if [[ $1 = '--start-dropbox' ]]; then
+    dropbox &
+    
+elif [[ $1 = '--stop-dropbox' ]]; then
+    killall dropbox
+    
+    
+elif [[ $1 = '--install' ]]; then
+	zenity --question --title='Dropbox Installation' --text 'This script will install Dropbox.\nDo you want to proceed?' || exit 0
+	terminator --title='Dropbox install' --command='inf-dropbox-pipemenu --install-dropbox'
+	
+	zenity --question --title='Dropbox Installation' --text 'Dropbox can be started automatically when you start your session. Would you like to autostart Dropbox when you login?'
+    if [[ $? = 0 ]]; then # add to autostart!
+        ans=$(zenity  --title='Dropbox Installation' --list --text  "$PROMPT_DELAY_TEXT" --radiolist  --column 'Pick' --column 'Seconds:' "${PROMPT_DELAY_VARIANTS[@]}")
+        if [[ $? = 0 ]]; then
+			mkdir -p "$HOME/.config/infinity/autostart"
+            echo >> "$HOME/.config/infinity/autostart/dropbox"
+            echo '# Autostart the Dropbox deamon' >> "$HOME/.config/infinity/autostart/dropbox"
+            echo "(sleep ${ans}s && dropbox) &" >> "$HOME/.config/infinity/autostart/dropbox"
+            echo >> "$HOME/.config/infinity/autostart/dropbox"
+        fi
+    fi
+    
+    zenity --question --title='Dropbox Installation' --text 'Do you wish to start the Dropbox client now?' || exit 0
+    dropbox &
+
+
+elif [[ $1 = '--install-dropbox' ]]; then
+    yaourt --noconfirm -S dropbox
+    
+    
+else
+	# Pipemenu
+	menuStart
+    if [[ ! -e /usr/bin/dropbox ]]; then
+        menuItem 'Install Dropbox' 'inf-dropbox-pipemenu --install'
+        menuSeparator
+        menuItem 'Find out more about Dropbox' 'x-www-browser http://dropbox.com'
+    else
+        [[ -e /usr/bin/dropbox ]] &&
+            menuItem 'Open Dropbox Folder' 'thunar $HOME/Dropbox'
+        
+        if ! pidof dropbox > /dev/null; then
+            menuItem 'Start Dropbox' 'inf-dropbox-pipemenu --start-dropbox'
+        else
+            menuItem 'Stop Dropbox' 'inf-dropbox-pipemenu --stop-dropbox'
+        fi
+        menuSeparator
+        menuItem 'Launch Dropbox Website' 'x-www-browser https://www.dropbox.com/home'
+    fi
+    menuItem 'Dropbox Terms' 'x-www-browser https://www.dropbox.com/terms'
+    menuEnd
+fi
+
+	
