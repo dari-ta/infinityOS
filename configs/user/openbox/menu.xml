@@ -516,7 +516,7 @@
 		<item label="Exit">
 			<action name="Execute">
 				<command>
-					cb-exit
+					inf-exit
 				</command>
 			</action>
 		</item>
