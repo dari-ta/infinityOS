@@ -1,0 +1,9 @@
+Terminal = terminator
+TermExec = ${Terminal} -e
+AlwaysInTerm = nano ssh telnet ftp sftp git lynx mc vi vim pine man
+
+ShowDotFiles = 1
+
+URL_http = x-www-browser %u
+URL_mailto = x-www-mail --compose %s
+
