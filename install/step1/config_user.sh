@@ -22,6 +22,13 @@ echo " >> config openbox"
 mkdir -p $HPATH/.config/openbox
 cp $IPATH/openbox/* $HPATH/.config/openbox/
 
+echo " >> config gmrun"
+cp $IPATH/.gmrunrc $HPATH/.gmrunrc
+
+echo " >> config terminator"
+mkdir -p $HPATH/.config/terminator
+cp $IPATH/terminator_config $HPATH/.config/terminator/config
+
 
 # Make all essential directories
 mkdir -p $HPATH/Documents

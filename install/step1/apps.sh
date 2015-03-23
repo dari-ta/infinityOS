@@ -55,6 +55,7 @@ echo " >> install system stuff"
 pacman --noconfirm -q -S lxtask clipit xf86-input-synaptics xfce4-power-manager >> /opt/infinity-install/install.log
 pacman --noconfirm -q -S libconfig asciidoc >> /opt/infinity-install/install.log
 pacman --noconfirm -q -S gksu polkit polkit-gnome >> /opt/infinity-install/install.log
+pacman --noconfirm -q -S gmrun
 
 ## Node.js
 echo " >> install node.js"

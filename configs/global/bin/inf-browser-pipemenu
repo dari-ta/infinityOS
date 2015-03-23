@@ -22,6 +22,9 @@ fi
 if [[ -e "/usr/bin/firefox" ]];then
 	menuItem "Firefox" "firefox"
 fi
+if [[ -e "/usr/bin/vivaldi" ]];then
+	menuItem "Vivaldi" "vivaldi"
+fi
 if [[ -e "/usr/bin/opera" ]];then
 	menuItem "Opera" "opera"
 fi
@@ -37,6 +40,9 @@ fi
 if ! [[ -e "/usr/bin/firefox" ]];then
 	menuItem "install Firefox" "inf-browser-install firefox"
 fi
+if ! [[ -e "/usr/bin/vivaldi" ]];then
+	menuItem "install Vivaldi" "inf-browser-install vivaldi"
+fi
 if ! [[ -e "/usr/bin/opera" ]];then
 	menuItem "install Opera" "inf-browser-install opera"
 fi
@@ -51,6 +57,9 @@ menuSubmenu "inf-browser-default" "Default Browser"
 	fi
 	if [[ -e "/usr/bin/firefox" ]];then
 		menuItem "Firefox" "inf-browser-install --default firefox"
+	fi
+	if [[ -e "/usr/bin/vivaldi" ]];then
+		menuItem "Vivaldi" "inf-browser-install --default vivaldi"
 	fi
 	if [[ -e "/usr/bin/opera" ]];then
 		menuItem "Opera" "inf-browser-install --default opera"

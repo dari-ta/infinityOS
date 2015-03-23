@@ -51,6 +51,13 @@ setupOpera(){
 	zenity --info --title="Browser Selector" --text="Opera installed!"
 }
 
+setupVivaldi(){
+	echo "Vivaldi"
+	terminator --title='Vivaldi install' --command='inf-browser-install --vivaldi' 
+	
+	zenity --info --title="Browser Selector" --text="Vivaldi installed!"
+}
+
 
 if [[ $1 = '--default' ]];then
 	
@@ -94,10 +101,31 @@ if [[ $1 = "opera" ]];then
 	setupOpera
 	exit 0
 fi
+if [[ $1 = "Vivaldi" ]];then
+	setupVivaldi
+	exit 0
+fi
+if [[ $1 = "vivaldi" ]];then
+	setupVivaldi
+	exit 0
+fi
 if [[ $1 = "--chrome" ]];then
 	echo "installing Google Chrome"
 	echo "please wait..."
 	yaourt --noconfirm -S google-chrome
+	
+	echo "Install finished"
+	echo "Press any key"
+
+	read -srn1
+	exit 0
+fi
+if [[ $1 = "--vivaldi" ]];then
+	echo "installing Vivaldi"
+	echo "please wait..."
+	yaourt --noconfirm -S vivaldi
+	
+	sudo ln -s /opt/vivaldi/vivaldi /usr/bin/vivaldi
 	
 	echo "Install finished"
 	echo "Press any key"
