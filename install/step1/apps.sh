@@ -11,6 +11,8 @@ pacman --noconfirm -q -S terminator xterm thunar thunar-archive-plugin file-roll
 ## Font
 echo " >> install fonts"
 pacman --noconfirm -q -S ttf-dejavu >> /opt/infinity-install/install.log
+# more fonts
+pacman --noconfirm -q -S ttf-ms-fonts ttf-vista-fonts ttf-droid ttf-freefont ttf-liberation ttf-tahoma >> /opt/infinity-install/install.log
 
 ## Desktop Manager
 echo " >> install desktop manager"
