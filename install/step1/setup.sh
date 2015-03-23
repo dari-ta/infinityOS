@@ -89,6 +89,7 @@ groupadd autologin >> /opt/infinity-install/install.log
 gpasswd -a root autologin >> /opt/infinity-install/install.log
 echo "#!/bin/bash" >> /root/.config/infinity/autostart/install_step2
 echo "/opt/infinity-install/step2/setup.sh &" >> /root/.config/infinity/autostart/install_step2
+chmod a+x /root/.config/infinity/autostart/install_step2
 
 
 echo "------------------------------------";

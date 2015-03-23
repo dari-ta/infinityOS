@@ -18,4 +18,4 @@ ln -s /usr/bin/inf-browser /usr/bin/x-www-browser
 
 echo " >> config lightdm"
 mkdir -p /etc/lightdm
-cp $IPATH/lightdm-gtk-greeter.conf /etc/lightdm/
+cp $IPATH/lightdm-gtk-greeter.conf_autologon /etc/lightdm/
