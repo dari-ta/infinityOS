@@ -25,7 +25,7 @@ sed -e"s/Type=Application/Type=XSession/g" < /usr/share/xsessions/openbox.deskto
 cp /usr/share/xsessions/openbox.desktop2 /usr/share/xsessions/openbox.desktop
 rm /usr/share/xsessions/openbox.desktop2
 
-pacman --noconfirm -q -S lightdm lightdm-gtk2-greeter >> /opt/infinity-install/install.log
+pacman --noconfirm -q -S lightdm lightdm-gtk-greeter >> /opt/infinity-install/install.log
 systemctl enable lightdm.service
 
 ## Design
